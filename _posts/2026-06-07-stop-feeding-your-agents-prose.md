@@ -56,6 +56,35 @@ Think of it as **structured knowledge engineering for the age of AI agents**.
 
 An ERS knowledge pack has three layers:
 
+```mermaid
+flowchart TB
+    subgraph Header["Layer 1 · Intent Routing"]
+        direction LR
+        LOAD["@LOAD tags"] --> XREF["@XREF cross-refs"]
+        XREF --> INTENT["@INTENT → @@ANCHOR"]
+    end
+
+    subgraph Anchors["Layer 2 · Anchored Knowledge"]
+        direction LR
+        A1["@@ORDERS:SCHEMA\nPKs, FKs, status codes"]
+        A2["@@ORDERS:JOINS\nCanonical JOIN paths"]
+        A3["@@ORDERS:TROUBLESHOOT\nDiagnostic queries"]
+    end
+
+    subgraph Guards["Layer 3 · Corrections & Guardrails"]
+        direction LR
+        C1["❌ products.PRODUCTNAME\n✅ products.NAME"]
+        C2["❌ refunds → orders\n✅ refunds → payments → orders"]
+    end
+
+    Header -->|"intent match"| Anchors
+    Anchors -->|"pre-flight check"| Guards
+
+    style Header fill:#1f2d3d,stroke:#4a90d9,color:#c9d1d9
+    style Anchors fill:#1a2d1a,stroke:#4caf50,color:#c9d1d9
+    style Guards fill:#2d2010,stroke:#ff9800,color:#c9d1d9
+```
+
 ### Layer 1: The Header Block (Intent Routing)
 
 Every knowledge file begins with a machine-readable header that declares:
@@ -90,9 +119,9 @@ Payment path: orders→payments(ORDERKEY)→refunds(PAYMENT_ID).
 ```
 
 Notice what's happening:
-- **No prose**. No "The orders table is the central entity in our e-commerce model and contains..." Just the facts.
+- **No prose**. Just the facts.
 - **Grep hints** in the anchor tag. A retrieval system can match on keywords without even parsing the content.
-- **Self-contained**. The FK relationships, the status codes, and the canonical JOIN paths for both fulfillment and payments are all right here. The agent doesn't need to cross-reference three other files.
+- **Self-contained**. The FK relationships, status codes, and canonical JOIN paths are all right here.
 
 ### Layer 3: Corrections and Guardrails (Error Prevention)
 
@@ -107,29 +136,44 @@ CRITICAL: refunds FK is refunds.PAYMENT_ID→payments.PAYMENT_ID (NOT refunds.OR
 @END@@@ORDER_DB:CORRECTIONS
 ```
 
-These aren't documentation. They're **anti-hallucination anchors**. They exist because every model — every single one — will, at some point, guess a column name based on pattern matching. `products` + "name" → `PRODUCTNAME`. It's a reasonable guess. It's also wrong. And every model will try to JOIN refunds directly to orders — it's the intuitive path, but refunds go through payments. By explicitly encoding common mistakes and their corrections, you give the agent a pre-flight checklist.
+These aren't documentation. They're **anti-hallucination anchors**. By explicitly encoding common mistakes and their corrections, you give the agent a pre-flight checklist.
 
 ---
 
 ## Why This Works: The Token Economics of Precision
 
-A typical RAG approach to domain knowledge works like this:
-1. User asks a question
-2. Embeddings search returns 3–5 chunks (~2,000–4,000 tokens of context)
-3. Model processes the full context to find the relevant bits
-4. Model generates an answer
+```mermaid
+flowchart LR
+    Q(["User Question"]) --> RAG
+    Q --> ERS
 
-With ERS, the same flow becomes:
-1. User asks a question
-2. Intent routing matches an anchor tag (~50–200 tokens of context)
-3. Model processes *only* the relevant anchor
-4. Model generates an answer
+    subgraph RAG["Traditional RAG"]
+        direction TB
+        R1["Embed question"] --> R2["Vector search\n3-5 chunks"]
+        R2 --> R3["~2,000-4,000\ntokens of context"]
+        R3 --> R4["Model extracts\nrelevant bits"]
+        R4 --> R5["Answer"]
+    end
 
-The context window shrinks by 10–20x. This has two effects:
+    subgraph ERS["ERS Routing"]
+        direction TB
+        E1["Match intent"] --> E2["Route to\n@@ANCHOR"]
+        E2 --> E3["~50-200\ntokens of context"]
+        E3 --> E4["Model applies\ndirectly"]
+        E4 --> E5["Answer"]
+    end
+
+    style RAG fill:#2d1f0e,stroke:#ff9800,color:#c9d1d9
+    style ERS fill:#1a2d1a,stroke:#4caf50,color:#c9d1d9
+    style R3 fill:#3d1515,stroke:#e53935,color:#c9d1d9
+    style E3 fill:#1a3d1a,stroke:#2e7d32,color:#c9d1d9
+```
+
+With ERS the context window shrinks by 10–20x. This has two effects:
 
 **For expensive models**: You're spending 90% less per query. At scale — thousands of agent calls per day — this is the difference between a viable product and a budget crisis.
 
-**For cheap models**: You're removing the noise that causes them to fail. A fast, inexpensive model with 200 tokens of precise context will outperform a frontier model with 4,000 tokens of loosely relevant prose. The smaller model isn't smarter — it's just not being asked to find a needle in a haystack.
+**For cheap models**: You're removing the noise that causes them to fail. A fast, inexpensive model with 200 tokens of precise context will outperform a frontier model with 4,000 tokens of loosely relevant prose.
 
 This is the counterintuitive result: **structured knowledge is a model equalizer.** It narrows the performance gap between a $0.002/call model and a $0.06/call model, because the task shifts from "comprehend and extract" to "read and apply."
 
@@ -139,46 +183,61 @@ This is the counterintuitive result: **structured knowledge is a model equalizer
 
 ### Pattern 1: One File, One Domain, Many Anchors
 
-Don't split knowledge across dozens of small files. Don't merge everything into one mega-file either. The sweet spot is **one file per knowledge domain**, with anchored sections inside.
+```mermaid
+flowchart TB
+    subgraph Pack1["orders.ers.md"]
+        H1["Header: @LOAD @XREF @INTENT"] --> S1["@@ORDERS:SCHEMA"]
+        H1 --> J1["@@ORDERS:JOINS"]
+        H1 --> T1["@@ORDERS:TROUBLESHOOT"]
+        H1 --> C1["@@ORDERS:CORRECTIONS"]
+    end
 
-An order management knowledge file might have:
-- `@@ORDERS:SCHEMA` — Tables, PKs, FKs, status codes
-- `@@ORDERS:JOINS` — Canonical JOIN patterns (order→items→inventory, order→payment→refund)
-- `@@ORDERS:TROUBLESHOOTING` — Common failure patterns and diagnostic queries
+    subgraph Pack2["payments.ers.md"]
+        H2["Header"] --> S2["@@PAYMENTS:SCHEMA"]
+        H2 --> W2["@@PAYMENTS:WEBHOOKS"]
+        H2 --> R2["@@PAYMENTS:REFUNDS"]
+    end
 
-Each anchor is independently retrievable, but they live in a single file that can be loaded as a unit when the agent needs deep context.
+    subgraph Pack3["inventory.ers.md"]
+        H3["Header"] --> S3["@@INVENTORY:SCHEMA"]
+        H3 --> A3["@@INVENTORY:ALLOCATION"]
+        H3 --> W3["@@INVENTORY:WAREHOUSES"]
+    end
+
+    Pack1 -.->|"@XREF"| Pack2
+    Pack1 -.->|"@XREF"| Pack3
+    Pack2 -.->|"@XREF"| Pack1
+
+    style Pack1 fill:#1f2d3d,stroke:#4a90d9,color:#c9d1d9
+    style Pack2 fill:#1a2d1a,stroke:#4caf50,color:#c9d1d9
+    style Pack3 fill:#2d2010,stroke:#ff9800,color:#c9d1d9
+```
+
+The sweet spot is **one file per knowledge domain**, with anchored sections inside. Each anchor is independently retrievable, but they live in a single file that can be loaded as a unit when the agent needs deep context.
 
 ### Pattern 2: Flatten Everything the Agent Touches
-
-Markdown tables, nested bullet lists, code fences with commentary — these are for humans. Agents parse them, but inefficiently. Every structural element is tokens the model spends understanding format instead of content.
 
 Before (human-friendly):
 ```markdown
 ### Orders Table
 **Primary Key:** `ORDERKEY`
-
 **Foreign Keys:**
 - `CUSTOMERKEY` → `customers.CUSTOMERKEY`
 - `WAREHOUSE_ID` → `warehouses.WAREHOUSE_ID`
-- `COUPON_ID` → `promotions.COUPON_ID` (nullable)
 ```
 
 After (agent-efficient):
 ```
-Orders PK=ORDERKEY. FK: CUSTOMERKEY→customers.CUSTOMERKEY; WAREHOUSE_ID→warehouses.WAREHOUSE_ID; COUPON_ID→promotions.COUPON_ID (nullable).
+Orders PK=ORDERKEY. FK: CUSTOMERKEY→customers.CUSTOMERKEY; WAREHOUSE_ID→warehouses.WAREHOUSE_ID.
 ```
 
-Same information. ~40% fewer tokens. And critically, no structural ambiguity for the model to resolve.
+Same information. ~40% fewer tokens. No structural ambiguity for the model to resolve.
 
 ### Pattern 3: Encode the Mistakes, Not Just the Truth
-
-Every domain has "obvious" assumptions that are wrong. Column names that look right but don't exist. JOIN paths that seem logical but break. API endpoints that moved two versions ago.
 
 The most impactful section in any ERS knowledge pack is the **CORRECTIONS** anchor. It's a short list of things the agent *will* get wrong if not told otherwise. This single anchor eliminates more errors than pages of correct documentation.
 
 ### Pattern 4: Cross-Reference, Don't Duplicate
-
-When knowledge overlaps between packs, use `@XREF` tags instead of copying content.
 
 ```
 @XREF payments-api -> for Stripe/Adyen webhook reference
@@ -186,24 +245,17 @@ When knowledge overlaps between packs, use `@XREF` tags instead of copying conte
 @XREF shipping-rules -> for carrier selection and SLA mappings
 ```
 
-The agent (or orchestrator) knows where to look next. The knowledge stays in one place. No drift. No contradictions.
+The knowledge stays in one place. No drift. No contradictions.
 
 ### Pattern 5: Grep Hints Are Retrieval Accelerators
 
-Every anchor includes a `->grep={}` hint — a set of keywords that describe the anchor's content. This serves two purposes:
-
-1. **For vector search**: The keywords act as semantic anchors that improve embedding similarity matching.
-2. **For literal search**: A simple grep pipeline can find the right anchor without any ML at all.
-
-This makes ERS retrieval-system agnostic. It works with sophisticated RAG pipelines. It also works with a shell script that greps a file.
+Every anchor includes a `->grep={}` hint — keywords describing the anchor's content. This makes ERS retrieval-system agnostic: it works with sophisticated RAG pipelines and with a shell script that greps a file.
 
 ---
 
 ## The Bigger Picture: Knowledge as an Engineering Discipline
 
-The AI community has invested enormous energy into model architecture, training data, fine-tuning, and prompt engineering. But the layer between "raw domain knowledge" and "what the model actually sees at inference time" — the **knowledge engineering layer** — remains largely ad hoc.
-
-ERS is an argument that this layer deserves the same rigor we apply to code:
+ERS is an argument that the knowledge engineering layer deserves the same rigor we apply to code:
 - **Versioned** (the header declares a version)
 - **Testable** (anchors can be validated for completeness)
 - **Composable** (packs can cross-reference without coupling)
@@ -213,17 +265,17 @@ ERS is an argument that this layer deserves the same rigor we apply to code:
 
 ## Getting Started: The 30-Minute ERS Migration
 
-**Step 1: Audit** — Read your docs as if you were a model with a 200-token attention span. What's essential? What's noise? What's misleading?
+**Step 1: Audit** — Read your docs as if you were a model with a 200-token attention span.
 
 **Step 2: Identify Domains** — Group your knowledge into coherent domains. Each domain becomes one ERS file.
 
-**Step 3: Write the Header** — Before touching the content, write the intent routing. What questions does this file answer? Map each question to a future anchor name.
+**Step 3: Write the Header** — Map each question to a future anchor name.
 
-**Step 4: Anchor the Content** — Wrap each coherent knowledge unit in `@START@@@`/`@END@@@` tags. Flatten prose to facts. Add grep hints.
+**Step 4: Anchor the Content** — Wrap each knowledge unit in `@START@@@`/`@END@@@` tags. Flatten prose to facts. Add grep hints.
 
-**Step 5: Add Corrections** — Think about what an agent *will* get wrong. Encode those corrections explicitly.
+**Step 5: Add Corrections** — Encode what an agent *will* get wrong explicitly.
 
-**Step 6: Delete the Rest** — If content isn't in an anchor, it doesn't exist to the agent. Remove it, or move it to a human-only documentation layer.
+**Step 6: Delete the Rest** — If content isn't in an anchor, it doesn't exist to the agent.
 
 ---
 
@@ -231,11 +283,8 @@ ERS is an argument that this layer deserves the same rigor we apply to code:
 
 The most powerful prompt engineering technique isn't a clever system message or a chain-of-thought instruction. It's ensuring the model sees *exactly* the right knowledge, *at exactly* the right moment, *in exactly* the right shape.
 
-ERS is one way to do that. There are others. The specific convention matters less than the principle:
-
 **Structure your knowledge like you structure your code. Your agents will thank you — and your budget will too.**
 
 ---
 
-*This article describes a pattern developed through real-world production experience building AI agents that operate across databases, APIs, and internal tooling. ERS (Extension Routing Structure) is an open convention — adapt it, rename it, improve it. The goal isn't a standard. It's a conversation about taking knowledge engineering as seriously as we take software engineering.*
-
+*ERS (Extension Routing Structure) is an open convention developed through real-world production experience building AI agents. Adapt it, rename it, improve it. The goal isn't a standard — it's a conversation about taking knowledge engineering as seriously as we take software engineering.*
