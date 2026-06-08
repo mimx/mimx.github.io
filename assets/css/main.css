@@ -176,3 +176,20 @@ footer a:hover { color: var(--text); }
   .nav-links { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .nav-links a { margin-left: 0; }
 }
+
+/* ── avatar ── */
+.hero-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.hero-title h1 { margin-bottom: 0; }
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  object-fit: cover;
+  flex-shrink: 0;
+}
