@@ -155,3 +155,24 @@ footer a:hover { color: var(--text); }
   main, header, footer { padding-left: 1.25rem; padding-right: 1.25rem; }
   .post-list li { flex-direction: column; gap: 0.2rem; }
 }
+
+/* ── category badges ── */
+.cat-tag {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+.cat-tag:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ── category nav: wrap on small screens ── */
+@media (max-width: 780px) {
+  .nav-links { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .nav-links a { margin-left: 0; }
+}
