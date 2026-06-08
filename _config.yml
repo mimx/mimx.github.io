@@ -6,5 +6,6 @@ url: "https://mimx.github.io"
 permalink: /posts/:slug/
 markdown: kramdown
 highlighter: rouge
+theme: null
 plugins:
   - jekyll-feed
