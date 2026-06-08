@@ -193,3 +193,13 @@ footer a:hover { color: var(--text); }
   object-fit: cover;
   flex-shrink: 0;
 }
+
+/* ── social links ── */
+.links {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--dim);
+}
+.links .prompt { color: var(--green); margin-right: 0.4rem; }
+.links a { color: var(--dim); text-decoration: none; }
+.links a:hover { color: var(--text); }
