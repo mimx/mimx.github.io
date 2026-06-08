@@ -2,6 +2,7 @@
 layout: post
 title: "Why IAM Is Hard (And Why That's the Point)"
 date: 2026-06-01
+categories: [concepts]
 tags: [iam, identity, access-management]
 excerpt: "Access management sounds simple until you're three levels deep in exception policies and wondering how you got here."
 ---
