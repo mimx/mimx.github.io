@@ -4,10 +4,7 @@ title: Home
 ---
 <section class="hero">
   <p class="prompt">$ whoami</p>
-  <div class="hero-title">
-    <img src="https://avatars.githubusercontent.com/u/23063606?v=4" alt="Mohamed Yehia" class="avatar">
-    <h1>Hey, I'm Mohamed 👋</h1>
-  </div>
+  <h1>Hey, I'm Mohamed 👋</h1>
   <p>I work in Identity and Access Management. I help organizations manage access, reduce risk, and build systems that are easier to understand and operate. I like thinking deeply about problems, simplifying complex ideas, and sharing what I learn along the way.</p>
 </section>
 
