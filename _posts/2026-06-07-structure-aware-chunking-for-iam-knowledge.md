@@ -2,6 +2,7 @@
 layout: post
 title: "The Invisible Tax on Every AI Agent Query — And How Domain-Aware Chunking Eliminates It"
 date: 2026-06-07
+categories: [engineering]
 tags: [ai-agents, rag, chunking, knowledge-engineering, iam]
 excerpt: "Why generic text splitting is the wrong abstraction for technical knowledge, and what a structure-aware chunker does differently."
 ---
