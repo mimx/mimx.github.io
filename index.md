@@ -8,7 +8,14 @@ title: Home
     <img src="https://avatars.githubusercontent.com/u/23063606?v=4" alt="Mohamed Yehia" class="avatar">
     <h1>Hey, I'm Mohamed 👋</h1>
   </div>
-  <p>IAM engineer by day, over-thinker by nature. I write about identity systems, access patterns, and occasionally the AI tools I build to make sense of it all.</p>
+  <p>IAM engineer by day, over-thinker by nature. I write about identity systems, access patterns, and occasionally the AI tools I build to make sense of it all.
+
+<p class="links">
+  <span class="prompt">$</span> open
+  <a href="https://github.com/mimx" target="_blank" rel="noopener">github</a> ·
+  <a href="https://www.linkedin.com/in/mimx/" target="_blank" rel="noopener">linkedin</a> ·
+  <a href="https://medium.com/@mimx" target="_blank" rel="noopener">medium</a>
+</p></p>
 </section>
 
 <h2 class="section-title">recent posts</h2>
