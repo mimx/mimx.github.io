@@ -8,7 +8,7 @@ title: Home
     <img src="https://avatars.githubusercontent.com/u/23063606?v=4" alt="Mohamed Yehia" class="avatar">
     <h1>Hey, I'm Mohamed 👋</h1>
   </div>
-  <p>I work in Identity and Access Management. I help organizations manage access, reduce risk, and build systems that are easier to understand and operate. I like thinking deeply about problems, simplifying complex ideas, and sharing what I learn along the way.</p>
+  <p>IAM engineer by day, over-thinker by nature. I write about identity systems, access patterns, and occasionally the AI tools I build to make sense of it all.</p>
 </section>
 
 <h2 class="section-title">recent posts</h2>
