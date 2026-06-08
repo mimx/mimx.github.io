@@ -2,6 +2,7 @@
 layout: post
 title: "Stop Feeding Your Agents Prose — Structure Your Knowledge Like Code"
 date: 2026-06-07
+categories: [concepts]
 tags: [iam, ai-agents, knowledge-engineering, ers, rag]
 excerpt: "Why the bottleneck in AI agent performance is not the model — it is how you organize what the model knows."
 ---
