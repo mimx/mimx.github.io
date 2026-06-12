@@ -31,7 +31,7 @@ header {
   padding: 1rem 2rem;
 }
 nav {
-  max-width: 780px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -58,6 +58,38 @@ main {
   margin: 0 auto;
   padding: 3rem 2rem;
   flex: 1;
+  width: 100%;
+}
+
+/* home page gets a wider container via the columns wrapper */
+.home-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  /* break out of the 780px main constraint */
+  width: min(1100px, calc(100vw - 4rem));
+  margin-left: calc(50% - min(550px, calc(50vw - 2rem)));
+}
+
+.home-col--news {
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+}
+
+@media (max-width: 860px) {
+  .home-columns {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    margin-left: 0;
+  }
+  .home-col--news {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
 }
 
 /* ── home ── */
@@ -74,32 +106,6 @@ main {
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.4rem;
   margin-bottom: 1.5rem;
-}
-
-/* ── home two-column layout ── */
-.home-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.home-col--news {
-  border-left: 1px solid var(--border);
-  padding-left: 2rem;
-}
-
-@media (max-width: 640px) {
-  .home-columns {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .home-col--news {
-    border-left: none;
-    border-top: 1px solid var(--border);
-    padding-left: 0;
-    padding-top: 2rem;
-  }
 }
 
 /* ── post list ── */
