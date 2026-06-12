@@ -76,6 +76,32 @@ main {
   margin-bottom: 1.5rem;
 }
 
+/* ── home two-column layout ── */
+.home-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.home-col--news {
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+}
+
+@media (max-width: 640px) {
+  .home-columns {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .home-col--news {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+}
+
 /* ── post list ── */
 .post-list { list-style: none; }
 .post-list li {
