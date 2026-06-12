@@ -7,17 +7,17 @@ tags: [ai, iam, cloud, hardware, iron-radar]
 excerpt: "Weak-signal notes from Iron Radar."
 ---
 
-Cloud Foundry UAA incorrectly treated XML encryption to the Service Provider (confidentiality) as a…
-  — [read more](https://nvd.nist.gov/vuln/detail/CVE-2026-41005)
+Async agents are only useful if you can trust what they hand back
+  — [read more](https://thenewstack.io/verifying-async-ai-agents/)
 
-<img src="https://res
-  — [read more](https://www.infoq.com/news/2026/06/slack-ssh-rest-quarry-migration/)
+Large language models have moved quickly from novelty to daily infrastructure in software developme…
+  — [read more](https://thenewstack.io/ai-training-data-quality/)
 
-<img src="https://res
-  — [read more](https://www.infoq.com/presentations/refactoring-ai-agents/)
+It&#8217;s no secret that generative AI has shifted the operations and business models of companies…
+  — [read more](https://thenewstack.io/agentic-ai-cloud-sovereignty/)
 
-OpenClaw before 2026
-  — [read more](https://nvd.nist.gov/vuln/detail/CVE-2026-53814)
+Beneath the chatbots and copilots, there&#8217;s a quiet revolution happening in the data services…
+  — [read more](https://thenewstack.io/lakefs-agentic-ai-sandbox/)
 
-mcp-server-kubernetes is a Model Context Protocol server for Kubernetes cluster management
-  — [read more](https://nvd.nist.gov/vuln/detail/CVE-2026-46519)
+AI beats us at coding
+  — [read more](https://thenewstack.io/delegate-tickets-to-ai/)
