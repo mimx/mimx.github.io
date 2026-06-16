@@ -13,7 +13,7 @@ excerpt: "Why generic text splitting is the wrong abstraction for technical know
 
 ## Preface
 
-This article is the second in a two-part series on building AI-native knowledge systems for technical operations domains. The first article — [*Stop Feeding Your Agents Prose: Structure Your Knowledge Like Code*](/posts/2026-06-07-stop-feeding-your-agents-prose/) — introduced **ERS (Extension Routing Structure)**, a convention for organizing domain knowledge so agents can retrieve it with precision. That piece argued that structured, anchor-based knowledge is a model equalizer: it narrows the performance gap between cheap and expensive models by ensuring the model sees exactly the right content at exactly the right moment.
+This article is the second in a two-part series on building AI-native knowledge systems for technical operations domains. The first article — [*Stop Feeding Your Agents Prose: Structure Your Knowledge Like Code*](https://mimx.org/posts/stop-feeding-your-agents-prose/) — introduced **ERS (Extension Routing Structure)**, a convention for organizing domain knowledge so agents can retrieve it with precision. That piece argued that structured, anchor-based knowledge is a model equalizer: it narrows the performance gap between cheap and expensive models by ensuring the model sees exactly the right content at exactly the right moment.
 
 This article goes one layer deeper. ERS describes *how knowledge should be organized*. What we examine here is *how that knowledge gets from a raw document into a retrieval system without losing the structure that makes it valuable* — and why the dominant approach to this problem, fixed-size text chunking, is particularly catastrophic for technical operations domains.
 
@@ -395,7 +395,7 @@ The compiler also produces a detailed audit report: how many sections were rescu
 
 ## Part IV: The Connection to Structured Knowledge Engineering
 
-Readers familiar with the [ERS article](/posts/2026-06-07-stop-feeding-your-agents-prose/) in this series will recognize that SmartChunker and PreChunkCompiler are the *ingestion-time enforcement layer* for ERS's *authoring-time conventions*.
+Readers familiar with the [ERS article](https://mimx.org/posts/stop-feeding-your-agents-prose/) in this series will recognize that SmartChunker and PreChunkCompiler are the *ingestion-time enforcement layer* for ERS's *authoring-time conventions*.
 
 ```mermaid
 flowchart LR
@@ -506,4 +506,4 @@ The ERS convention provides the authoring framework. SmartChunker provides the i
 
 ---
 
-*This article is part of a series on knowledge engineering for AI-native operational systems. Related reading: [Stop Feeding Your Agents Prose — Structure Your Knowledge Like Code](/posts/2026-06-07-stop-feeding-your-agents-prose/), which introduces the ERS authoring convention that this ingestion pipeline is designed to preserve.*
+*This article is part of a series on knowledge engineering for AI-native operational systems. Related reading: [Stop Feeding Your Agents Prose — Structure Your Knowledge Like Code](https://mimx.org/posts/stop-feeding-your-agents-prose/), which introduces the ERS authoring convention that this ingestion pipeline is designed to preserve.*
