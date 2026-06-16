@@ -10,12 +10,6 @@ excerpt: "A protocol for embedding machine-readable governance metadata directly
 # IGTS — Identity Governance Tagging Standard
 ### A Protocol for Machine-Readable Governance at the Source
 
-**Author:** Mohamed Mahmoud  
-**Date:** 2026-06-16  
-**Domain:** IAM Architecture / Identity Governance  
-**Status:** Draft
-
----
 
 ## The Problem This Solves
 
