@@ -16,7 +16,7 @@ excerpt: "A protocol for embedding machine-readable governance metadata directly
 
 Every IGA programme eventually runs into the same wall.
 
-If you want the foundation first, read [IGA Compliance, SoD, and the Role Metadata Model](https://mimx.github.io/2026/06/16/iga-compliance-sod-deep-dive/). This article starts where that one ends: how to make governance metadata available at the source.
+If you want the foundation first, read [IGA Compliance, SoD, and the Role Metadata Model](https://mimx.org/posts/iga-compliance-sod-deep-dive/). This article starts where that one ends: how to make governance metadata available at the source.
 
 You connect 500 applications to your governance platform. Each one has roles, groups, entitlements, permission sets. You need to classify every object: Is it SOX-critical? How sensitive is it? What business function does it represent? Does granting it alongside something else create a Segregation of Duties conflict?
 
