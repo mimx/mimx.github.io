@@ -23,22 +23,27 @@ title: Home
   <div class="home-col">
     <h2 class="section-title">recent posts</h2>
     <ul class="post-list">
-    {% assign other_posts = site.posts | where_exp: "post", "post.categories contains 'concepts' or post.categories contains 'technology' or post.categories contains 'engineering' or post.categories contains 'field-notes'" %}
-    {% for post in other_posts limit:8 %}
-      <li>
-        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
-        <div>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          {% if post.categories %}
-          <div class="tags" style="margin-top:0.3rem">
-            {% for cat in post.categories %}
-              <a href="{{ '/' | append: cat | append: '/' | relative_url }}" class="tag cat-tag">{{ cat }}</a>
-            {% endfor %}
-          </div>
-          {% endif %}
-          {% if post.excerpt %}<p class="excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>{% endif %}
-        </div>
-      </li>
+    {% assign shown = 0 %}
+    {% for post in site.posts %}
+      {% unless post.categories contains "news" %}
+        {% if shown < 8 %}
+          {% assign shown = shown | plus: 1 %}
+          <li>
+            <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <div>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              {% if post.categories %}
+              <div class="tags" style="margin-top:0.3rem">
+                {% for cat in post.categories %}
+                  <a href="{{ '/' | append: cat | append: '/' | relative_url }}" class="tag cat-tag">{{ cat }}</a>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if post.excerpt %}<p class="excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>{% endif %}
+            </div>
+          </li>
+        {% endif %}
+      {% endunless %}
     {% endfor %}
     </ul>
   </div>
