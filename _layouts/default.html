@@ -40,6 +40,15 @@
       div.textContent = code.textContent;
       code.parentElement.replaceWith(div);
     });
+
+    // Open all links inside post content in a new tab
+    // Excludes internal nav links (same origin)
+    document.querySelectorAll('.post-content a, .post-list a').forEach(function(link) {
+      if (link.hostname !== window.location.hostname) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
   </script>
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
