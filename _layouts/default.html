@@ -41,10 +41,11 @@
       code.parentElement.replaceWith(div);
     });
 
-    // Open all links inside post content in a new tab
-    // Excludes internal nav links (same origin)
+    // Open all links inside post content and listings in a new tab
+    // Excludes anchor-only links (#section) which should stay on the page
     document.querySelectorAll('.post-content a, .post-list a').forEach(function(link) {
-      if (link.hostname !== window.location.hostname) {
+      var href = link.getAttribute('href') || '';
+      if (!href.startsWith('#')) {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
       }
