@@ -9,12 +9,6 @@ excerpt: "How SOX Criticality, Sys Criticality, Functions, Rulesets, and SoD rul
 
 # IGA Compliance, SoD, and the Role Metadata Model - A Deep Dive
 
-**Author:** Mohamed Mahmoud  
-**Date:** 2026-06-16  
-**Domain:** IAM Architecture / Identity Governance  
-**Status:** Draft
-
----
 
 ## Introduction
 
