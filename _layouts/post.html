@@ -15,3 +15,9 @@ layout: default
   </div>
   <a href="{{ '/posts/' | relative_url }}" class="back-link">← back to posts</a>
 </article>
+
+{% if page.wide %}
+<script>
+  document.querySelector('main').classList.add('wide');
+</script>
+{% endif %}
