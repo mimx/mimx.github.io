@@ -307,7 +307,7 @@ IGA platforms can govern metadata once it exists. The harder problem is getting 
 
 That is where the next architectural step appears: source-side governance metadata. Instead of asking the IGA platform, IAM team, or an LLM to infer all meaning after import, the system that creates the access object should carry a machine-readable declaration of what the access does.
 
-That is the idea behind [IGTS - Identity Governance Tagging Standard](https://mimx.github.io/2026/06/16/igts-identity-governance-tagging-standard/): make governance meaning explicit at the source, then let IGA parse, validate, and govern it.
+That is the idea behind [IGTS - Identity Governance Tagging Standard](https://mimx.org/posts/igts-identity-governance-tagging-standard/): make governance meaning explicit at the source, then let IGA parse, validate, and govern it.
 
 ---
 
@@ -336,4 +336,4 @@ That is the idea behind [IGTS - Identity Governance Tagging Standard](https://mi
 - Identity Governance and Administration overview
 - SOX, ISO 27001, NIST, and SOC 2 control framework references
 - IGA platform documentation for risk metadata, certification campaigns, SoD evaluation, Functions, Rulesets, and mitigating controls
-- [IGTS - Identity Governance Tagging Standard](https://mimx.github.io/2026/06/16/igts-identity-governance-tagging-standard/) - source-side governance metadata
+- [IGTS - Identity Governance Tagging Standard](https://mimx.org/posts/igts-identity-governance-tagging-standard/) - source-side governance metadata
