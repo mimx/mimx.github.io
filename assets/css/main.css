@@ -61,6 +61,11 @@ main {
   width: 100%;
 }
 
+/* ── wide post layout (double width) ── */
+main.wide {
+  max-width: 1560px;
+}
+
 /* home page gets a wider container via the columns wrapper */
 .home-columns {
   display: grid;
