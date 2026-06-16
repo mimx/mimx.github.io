@@ -3,6 +3,7 @@ layout: post
 title: "IGTS - Identity Governance Tagging Standard"
 date: 2026-06-16
 categories: [concepts]
+wide: true
 tags: [iga, identity-governance, igts, sod, compliance, metadata, standard, tagging]
 excerpt: "A protocol for embedding machine-readable governance metadata directly into identity objects at the source — shifting classification from after-the-fact inference to owner-attested declaration."
 ---
