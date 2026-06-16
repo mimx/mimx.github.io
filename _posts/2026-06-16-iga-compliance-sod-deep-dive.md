@@ -3,6 +3,7 @@ layout: post
 title: "IGA Compliance, SoD, and the Role Metadata Model - A Deep Dive"
 date: 2026-06-16
 categories: [technology]
+wide: true
 tags: [iga, saviynt, sod, compliance, sox, iso27001, soc2, identity-governance]
 excerpt: "How SOX Criticality, Sys Criticality, Functions, Rulesets, and SoD rules fit together as the governance substrate in enterprise IGA platforms."
 ---
