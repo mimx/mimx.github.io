@@ -8,7 +8,7 @@ title: Home
     <img src="https://avatars.githubusercontent.com/u/23063606?v=4" alt="Mohamed Yehia" class="avatar">
     <h1>Hey, I'm Mohamed 👋</h1>
   </div>
-  <p>IAM engineer by day, over-thinker by nature. I write about identity systems, access patterns, and occasionally the AI tools I build to make sense of it all.
+  <p>IAM Solution Architect by day, over-thinker by nature. I write about Agentic AI, identity systems, and access patterns.
 
 <p class="links">
   <span class="prompt">$</span> open
