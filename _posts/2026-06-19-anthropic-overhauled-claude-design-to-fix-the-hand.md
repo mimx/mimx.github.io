@@ -2,7 +2,7 @@
 layout: post
 title: "Anthropic Overhauled Claude Design to Fix the Handoff"
 date: 2026-06-19
-categories: [technology]
+categories: [news]
 tags: [anthropic, claude, ai, design, ux]
 excerpt: "Anthropic redesigned Claude's design workflow to address the designer-engineer handoff — a designer and engineer disagree on whether it worked."
 ---
