@@ -577,20 +577,24 @@ excerpt: "Every IGA programme eventually hits a brick wall. IGTS is how you brea
 
 <div class="igts-section">
   <h2>Community Questions</h2>
-  <p>IGTS is early-stage. These questions are worth debating with your team and across the IGA community.</p>
+  <p>IGTS is early-stage. These questions are worth debating with your team and across the IGA community. If you have an answer, an experience, or a challenge — <a href="https://github.com/mimx/mimx.github.io/issues/new?labels=igts,discussion&title=IGTS+Discussion%3A+">open a GitHub issue</a> and let's build the body of knowledge together.</p>
 
   <div class="igts-questions">
     <div class="igts-question">
       <span class="igts-question-mark">Q</span> Does your IGA platform support custom metadata fields for DORA extensions like <code>;rto=tier1</code> or <code>;vendor=azure;ctpp=yes</code>? How do you store them today?
+      <div style="margin-top:0.75rem"><a href="https://github.com/mimx/mimx.github.io/issues/new?labels=igts,discussion&title=IGTS+Q%3A+DORA+metadata+fields&body=**Question%3A**+Does+your+IGA+platform+support+custom+metadata+fields+for+DORA+extensions%3F%0A%0A**My+experience%3A**%0A" style="font-size:0.82rem; color:#818cf8; font-style:normal">→ Share your answer on GitHub</a></div>
     </div>
     <div class="igts-question">
       <span class="igts-question-mark">Q</span> How do you handle tag integrity when entitlements live in mutable AD Description fields or freeform spreadsheet notes? What's your drift detection approach?
+      <div style="margin-top:0.75rem"><a href="https://github.com/mimx/mimx.github.io/issues/new?labels=igts,discussion&title=IGTS+Q%3A+Tag+integrity+%26+drift&body=**Question%3A**+How+do+you+handle+tag+integrity+in+mutable+fields%3F%0A%0A**My+approach%3A**%0A" style="font-size:0.82rem; color:#818cf8; font-style:normal">→ Share your answer on GitHub</a></div>
     </div>
     <div class="igts-question">
       <span class="igts-question-mark">Q</span> What's your approach to classifying NHIs — service accounts, CI/CD tokens, API keys — in the IGTS taxonomy? Same segments, or a parallel namespace?
+      <div style="margin-top:0.75rem"><a href="https://github.com/mimx/mimx.github.io/issues/new?labels=igts,discussion&title=IGTS+Q%3A+Non-human+identity+classification&body=**Question%3A**+How+do+you+classify+NHIs+in+the+IGTS+taxonomy%3F%0A%0A**My+approach%3A**%0A" style="font-size:0.82rem; color:#818cf8; font-style:normal">→ Share your answer on GitHub</a></div>
     </div>
     <div class="igts-question">
       <span class="igts-question-mark">Q</span> Are your auditors asking for IGTS-style structured evidence yet? What does that conversation look like?
+      <div style="margin-top:0.75rem"><a href="https://github.com/mimx/mimx.github.io/issues/new?labels=igts,discussion&title=IGTS+Q%3A+Auditor+evidence+requests&body=**Question%3A**+Are+auditors+asking+for+IGTS-style+evidence%3F%0A%0A**My+experience%3A**%0A" style="font-size:0.82rem; color:#818cf8; font-style:normal">→ Share your answer on GitHub</a></div>
     </div>
   </div>
 </div>
